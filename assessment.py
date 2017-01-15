@@ -58,6 +58,7 @@ Part 1: Discussion
 # Create your classes and class methods
 
 class Student(object):
+    """A student"""
 
     def __init__(self, first_name, last_name, address):
         self.first_name = first_name
@@ -66,12 +67,14 @@ class Student(object):
 
 
 class Question(object):
+    """A question"""
 
     def __init__(self, question, answer):
         self.question = question
         self.correct_answer = answer
 
     def ask_and_evaluate(self):
+        """Ask a question and return True if the answer is correct (else False)"""
         user_answer = raw_input(self.question + " > ")
         if user_answer.lower() == self.correct_answer.lower():
             return True
@@ -80,16 +83,19 @@ class Question(object):
 
 
 class Exam(object):
+    """An exam"""
 
     def __init__(self, name):
         self.name = name
         self.questions = []
 
     def add_question(self, question, correct_answer):
+        """Adds a question to an exam"""
         new_question = Question(question, correct_answer)
         self.questions.append(new_question)
 
     def administer(self):
+        """Asks each question in an exam and returns the score as a decimal"""
         score = 0.0
         for question in self.questions:
             if question.ask_and_evaluate():
@@ -100,6 +106,7 @@ class Exam(object):
 
 
 class Quiz(Exam):
+    """A quiz"""
     def administer(self):
         if super(Quiz, self).administer() >= 0.5:
             return True
@@ -108,6 +115,7 @@ class Quiz(Exam):
 
 
 def take_test(exam, student):
+    """Administers a score for a student and prints the result"""
     student.score = exam.administer()
 
     print "{}'s score on {} is {}.".format(student.first_name,
@@ -116,6 +124,7 @@ def take_test(exam, student):
 
 
 def example():
+    """Create a sample exam and student, and take_test"""
     ex_test = Exam("example_test")
 
     ex_test.add_question("What's 2+2?", "4")
