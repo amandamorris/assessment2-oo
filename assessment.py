@@ -74,9 +74,9 @@ class Question(object):
     def ask_and_evaluate(self):
         user_answer = raw_input(self.question + " > ")
         if user_answer.lower() == self.correct_answer:
-            print True
+            return True
         else:
-            print False
+            return False
 
 
 class Exam(object):
@@ -86,11 +86,16 @@ class Exam(object):
         self.questions = []
 
     def add_question(self, question, correct_answer):
-        self.questions.append({"question": question,
-                               "correct_answer": correct_answer
-                               })
+        new_question = Question(question, correct_answer)
+        print new_question.question
+        print new_question.correct_answer
+        #question.ask_and_evaluate()
+        self.questions.append(new_question)
 
     def administer(self):
-        score = 0
+        score = 0.0
         for question in self.questions:
-            
+            if question.ask_and_evaluate():
+                score += 1
+
+        return score/(len(self.questions))
