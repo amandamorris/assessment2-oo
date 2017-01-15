@@ -95,7 +95,16 @@ class Exam(object):
             if question.ask_and_evaluate():
                 score += 1
 
+# todo: format the score better
         return score/(len(self.questions))
+
+
+class Quiz(Exam):
+    def administer(self):
+        if super(Quiz, self).administer() >= 0.5:
+            return True
+        else:
+            return False
 
 
 def take_test(exam, student):
@@ -117,8 +126,8 @@ def example():
 
     take_test(ex_test, ex_student)
 
-print ""
-print "Creating and administering an example exam..."
-print ""
+# print ""
+# print "Creating and administering an example exam..."
+# print ""
 
-example()
+# #example()
