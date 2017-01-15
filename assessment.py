@@ -99,3 +99,11 @@ class Exam(object):
                 score += 1
 
         return score/(len(self.questions))
+
+
+def take_test(exam, student):
+    student.score = exam.administer()
+
+    print "{}'s score on {} is {}.".format(student.first_name,
+                                           exam.name,
+                                           student.score)
