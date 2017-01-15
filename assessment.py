@@ -72,8 +72,8 @@ class Question(object):
         self.correct_answer = answer
 
     def ask_and_evaluate(self):
-        quser_answer = raw_input(self.question + " > ")
-        if user_answer.lower() == self.correct_answer:
+        user_answer = raw_input(self.question + " > ")
+        if user_answer.lower() == self.correct_answer.lower():
             return True
         else:
             return False
@@ -96,7 +96,7 @@ class Exam(object):
                 score += 1
 
 # todo: format the score better
-        return score/(len(self.questions))
+        return round(score/(len(self.questions)), 2)
 
 
 class Quiz(Exam):
