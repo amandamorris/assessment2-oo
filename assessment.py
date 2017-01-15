@@ -36,19 +36,19 @@ Part 1: Discussion
 6. How is a class attribute different than an instance attribute?
    Give an example of when you might use each.
 
-   For each instance of a class, the instance gets class attributes set during
-   instantiation, and the class variables are shared among all instances of the
-   class.  An intance attribute is specific to a particular instance of a class,
-   and different instances may have different values of an instance attribute.
+   For each instance of a class, the instance may get class attributes set
+   during instantiation, and the class attributes are shared among all instances
+   of the class.  An intance attribute is specific to a particular instance of
+   a class, and different instances likely have different values of an instance
+   attribute.
 
    You would use a class attribute when all instances of the class are expected
    to have the attribute, and when they are all expected to have the same value
    of the attribute (though exceptions are possible).  For example, all oranges
    have orange flesh (let's pretend cara cara oranges don't exist for a minute),
-   so flesh_color = "orange" could be a good class attribute of the class
-   Orange.  However, not all oranges are ripe, and so ripe = True or
-   ripe = False might be a good instance attribute for a particular instace of
-   Orange.
+   flesh_color = "orange" could be a good class attribute of the class Orange.
+   However, not all oranges are ripe, and so ripe = True or ripe = False might
+   be a good instance attribute for a particular instance of Orange.
 
 
 """
@@ -72,7 +72,7 @@ class Question(object):
         self.correct_answer = answer
 
     def ask_and_evaluate(self):
-        user_answer = raw_input(self.question + " > ")
+        quser_answer = raw_input(self.question + " > ")
         if user_answer.lower() == self.correct_answer:
             return True
         else:
