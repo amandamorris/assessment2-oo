@@ -87,9 +87,6 @@ class Exam(object):
 
     def add_question(self, question, correct_answer):
         new_question = Question(question, correct_answer)
-        print new_question.question
-        print new_question.correct_answer
-        #question.ask_and_evaluate()
         self.questions.append(new_question)
 
     def administer(self):
@@ -107,3 +104,21 @@ def take_test(exam, student):
     print "{}'s score on {} is {}.".format(student.first_name,
                                            exam.name,
                                            student.score)
+
+
+def example():
+    ex_test = Exam("example_test")
+
+    ex_test.add_question("What's 2+2?", "4")
+    ex_test.add_question("What's 1+5?", "6")
+    ex_test.add_question("What's 3+0?", "3")
+
+    ex_student = Student("Pupil", "McStudentson", "123 main st")
+
+    take_test(ex_test, ex_student)
+
+print ""
+print "Creating and administering an example exam..."
+print ""
+
+example()
